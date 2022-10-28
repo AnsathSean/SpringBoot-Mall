@@ -2,6 +2,7 @@ package com.EricHsu.springbootmall.service.Impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.EricHsu.springbootmall.dao.ProductDao;
+import com.EricHsu.springbootmall.dto.ProductRequest;
 import com.EricHsu.springbootmall.model.Product;
 import com.EricHsu.springbootmall.service.ProductServie;
 
@@ -15,5 +16,10 @@ public class ProdcutServiceImpl implements ProductServie{
 	@Override
 	public Product getProductById(Integer productId) {
 		return productDao.getProductById(productId);
+	}
+	
+	@Override
+	public Integer createProduct(ProductRequest productRequest) {
+		return productDao.createProduct(productRequest);
 	}
 }
