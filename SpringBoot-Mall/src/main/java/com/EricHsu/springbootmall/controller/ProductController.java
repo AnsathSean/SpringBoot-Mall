@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,7 +22,7 @@ public class ProductController {
 	private ProductServie productServie;
 	
 	@GetMapping("/products/{productId}")
-	public ResponseEntity<Product> getProduct(@PathVariable Integer productId){
+	public ResponseEntity<Product> Product(@PathVariable Integer productId){
 		Product product = productServie.getProductById(productId);
 		if (product !=null) {
 			return ResponseEntity.status(HttpStatus.OK).body(product);
@@ -39,4 +40,20 @@ public class ProductController {
 		
 		return ResponseEntity.status(HttpStatus.CREATED).body(product);
 	}
+	
+	@PutMapping("/products/{productId}")
+	public ResponseEntity<Product> updateProduct(@PathVariable Integer productId,
+												@RequestBody ProductRequest productRequest){
+		Product product = productServie.getProductById(productId);
+		
+		if (product ==null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		}
+		productServie.updateProduct(productId, productRequest);
+		
+		Product updateProduct = productServie.getProductById(productId);
+		return ResponseEntity.status(HttpStatus.OK).body(updateProduct);
+		
+	}
+	
 }
