@@ -28,4 +28,12 @@ public class ProdcutServiceImpl implements ProductServie{
 		productDao.updateProduct(productId, productRequest);
 		
 	}
+
+	@Override
+	public void deleteProductById(Integer productId) {
+		productDao.deleteProductById(productId);
+
+	}
+
+
 }
