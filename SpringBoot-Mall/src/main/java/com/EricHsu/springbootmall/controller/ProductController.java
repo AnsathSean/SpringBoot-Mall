@@ -1,6 +1,8 @@
 package com.EricHsu.springbootmall.controller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +23,16 @@ public class ProductController {
 	
 	@Autowired
 	private ProductServie productServie;
-	
+	//取得商品清單
+	@GetMapping("/products")
+	public ResponseEntity<List<Product>> getProducts(){
+		List<Product> proudctList = productServie.getProducts();
+		
+		return ResponseEntity.status(HttpStatus.OK).body(proudctList);
+		
+		
+	}
+	//藉由ID查詢商品
 	@GetMapping("/products/{productId}")
 	public ResponseEntity<Product> Product(@PathVariable Integer productId){
 		Product product = productServie.getProductById(productId);
@@ -33,7 +44,7 @@ public class ProductController {
 		}
 		
 	}
-
+	//新增商品
 	@PostMapping("/products/")
 	public ResponseEntity<Product> createProduct(@RequestBody ProductRequest productRequest){
 		Integer productId = productServie.createProduct(productRequest);
@@ -41,7 +52,7 @@ public class ProductController {
 		
 		return ResponseEntity.status(HttpStatus.CREATED).body(product);
 	}
-	
+	//修改商品
 	@PutMapping("/products/{productId}")
 	public ResponseEntity<Product> updateProduct(@PathVariable Integer productId,
 												@RequestBody ProductRequest productRequest){
@@ -56,7 +67,7 @@ public class ProductController {
 		return ResponseEntity.status(HttpStatus.OK).body(updateProduct);
 		
 	}
-	
+	//刪除商品
 	@DeleteMapping("/products/{productId}")
 	public ResponseEntity<Product> deleteProudct(@PathVariable Integer productId){
 	

@@ -1,4 +1,6 @@
 package com.EricHsu.springbootmall.service.Impl;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.EricHsu.springbootmall.dao.ProductDao;
@@ -33,6 +35,11 @@ public class ProdcutServiceImpl implements ProductServie{
 	public void deleteProductById(Integer productId) {
 		productDao.deleteProductById(productId);
 
+	}
+
+	@Override
+	public List<Product> getProducts() {
+		return productDao.getProducts();
 	}
 
 

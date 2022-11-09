@@ -1,4 +1,6 @@
 package com.EricHsu.springbootmall.dao;
+import java.util.List;
+
 import com.EricHsu.springbootmall.dto.ProductRequest;
 import com.EricHsu.springbootmall.model.Product;
 
@@ -17,6 +19,10 @@ public interface ProductDao {
 
 
 	void deleteProductById(Integer productId);
+
+
+
+	List<Product> getProducts();
 
 
 
