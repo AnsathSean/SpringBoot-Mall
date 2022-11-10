@@ -3,6 +3,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import com.EricHsu.springbootmall.constant.ProductCategory;
 import com.EricHsu.springbootmall.dao.ProductDao;
 import com.EricHsu.springbootmall.dto.ProductRequest;
 import com.EricHsu.springbootmall.model.Product;
@@ -38,8 +40,8 @@ public class ProdcutServiceImpl implements ProductServie{
 	}
 
 	@Override
-	public List<Product> getProducts() {
-		return productDao.getProducts();
+	public List<Product> getProducts(ProductCategory category,String search) {
+		return productDao.getProducts(category,search);
 	}
 
 
