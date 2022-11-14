@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import com.EricHsu.springbootmall.constant.ProductCategory;
 import com.EricHsu.springbootmall.dao.ProductDao;
+import com.EricHsu.springbootmall.dto.ProductQueryParams;
 import com.EricHsu.springbootmall.dto.ProductRequest;
 import com.EricHsu.springbootmall.model.Product;
 import com.EricHsu.springbootmall.service.ProductServie;
@@ -34,14 +35,15 @@ public class ProdcutServiceImpl implements ProductServie{
 	}
 
 	@Override
-	public void deleteProductById(Integer productId) {
+	public void deleteProductById(Integer productId) 
+	{
 		productDao.deleteProductById(productId);
 
 	}
 
 	@Override
-	public List<Product> getProducts(ProductCategory category,String search) {
-		return productDao.getProducts(category,search);
+	public List<Product> getProducts(ProductQueryParams productQueryParams) {
+		return productDao.getProducts(productQueryParams);
 	}
 
 
