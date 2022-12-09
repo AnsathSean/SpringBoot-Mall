@@ -28,4 +28,8 @@ public interface ProductDao {
 
 
 
+	Integer countProducts(ProductQueryParams productQueryParams);
+
+
+
 }

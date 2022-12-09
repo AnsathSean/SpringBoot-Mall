@@ -46,5 +46,10 @@ public class ProdcutServiceImpl implements ProductServie{
 		return productDao.getProducts(productQueryParams);
 	}
 
+	@Override
+	public Integer countProducts(ProductQueryParams productQueryParams) {
+		return productDao.countProducts(productQueryParams);
+	}
+
 
 }
